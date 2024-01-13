@@ -11,28 +11,20 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { AcmeLogo } from "./AcmeLogo";
 import Image from "next/image.js";
+import { dataNavBar } from "./NavBar.data";
+import { usePathname } from "next/navigation";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
+  const pathname = usePathname();
 
   return (
     <Navbar
       className="bg-primary-300"
+      classNames={{
+        item: ["data-[active=true]:text-secondary-100"],
+      }}
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
@@ -55,7 +47,7 @@ export default function App() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-6 grow" justify="center">
         <NavbarBrand>
           <Image
             src="/assets/logo.jpeg"
@@ -63,52 +55,49 @@ export default function App() {
             height={50}
             alt="Logo todocampo"
           />
-          <p className="font-bold text-inherit">todocampo</p>
+          <p className="font-bold text-inherit pl-2">todocampo</p>
         </NavbarBrand>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
+        {dataNavBar.map((data) => {
+          console.log("Active:", pathname === data.idLink);
+          return (
+            <NavbarItem
+              key={data.id}
+              isActive={pathname === data.idLink}
+              className="group"
+            >
+              <Link
+                color="foreground"
+                href={data.idLink}
+                className="font-normal text-sm group-data-[active=true]:text-secondary-500"
+              >
+                {data.name}
+              </Link>
+            </NavbarItem>
+          );
+        })}
         <NavbarItem>
           <Button as={Link} color="warning" href="#" variant="flat">
-            Sign Up
+            Ingresar
           </Button>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu>
-        {menuItems.map((item, index) => (
+        {dataNavBar.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
               className="w-full"
               color={
                 index === 2
                   ? "warning"
-                  : index === menuItems.length - 1
+                  : index === dataNavBar.length - 1
                   ? "danger"
                   : "foreground"
               }
               href="#"
               size="lg"
             >
-              {item}
+              {item.name}
             </Link>
           </NavbarMenuItem>
         ))}
