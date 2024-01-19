@@ -2,7 +2,7 @@ import SignInForm from "@/components/Form/SignInForm";
 
 const Page = () => {
   return (
-    <div className="w-full bg-blue-200 flex">
+    <div className="w-full">
       <SignInForm />
     </div>
   );

@@ -1,27 +1,19 @@
-"use client";
-import { useState } from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarMenuToggle,
-  NavbarMenuItem,
-  NavbarMenu,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Button,
-} from "@nextui-org/react";
 import Image from "next/image.js";
 import { dataNavBar } from "./NavBar.data";
-import { usePathname } from "next/navigation";
 
-export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
+export default function NavBar() {
+  //const [isMenuOpen, setIsMenuOpen] = useState(false);
+  //const pathname = usePathname();
 
   return (
+    <div className="bg-zinc-200 py-2 border-b border-s-zinc-200 fixed w-full z-10 top-0">
+      Navbar
+    </div>
+  );
+  /*
+  return (
     <Navbar
-      className="bg-primary-300"
+      className="bg-primary-300 fixed top-0"
       classNames={{
         item: ["data-[active=true]:text-secondary-100"],
       }}
@@ -104,4 +96,5 @@ export default function App() {
       </NavbarMenu>
     </Navbar>
   );
+  */
 }
