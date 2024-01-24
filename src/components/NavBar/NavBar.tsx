@@ -1,13 +1,43 @@
-import Image from "next/image.js";
 import { dataNavBar } from "./NavBar.data";
+import Link from "next/link";
+import { HandMetal } from "lucide-react";
+import { buttonVariants } from "../ui/button";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import UserAccountNav from "./UserAccountNav";
 
-export default function NavBar() {
-  //const [isMenuOpen, setIsMenuOpen] = useState(false);
-  //const pathname = usePathname();
+const NavBar = async () => {
+  const session = await getServerSession(authOptions);
 
   return (
     <div className="bg-zinc-200 py-2 border-b border-s-zinc-200 fixed w-full z-10 top-0">
-      Navbar
+      <div className="container  flex items-center justify-between">
+        <Link href="/">
+          <HandMetal />
+        </Link>
+        <div className="flex flex-row gap-4 items-center">
+          {dataNavBar.map((data) => {
+            //console.log("Active:", pathname === data.idLink);
+            return (
+              <Link
+                key={data.id}
+                color="foreground"
+                href={data.idLink}
+                className="font-normal text-sm"
+              >
+                {data.name}
+              </Link>
+            );
+          })}
+          {session?.user ? (
+            <UserAccountNav />
+          ) : (
+            <Link className={buttonVariants()} href="/sign-in">
+              Ingresar
+            </Link>
+          )}
+        </div>
+      </div>
     </div>
   );
   /*
@@ -97,4 +127,6 @@ export default function NavBar() {
     </Navbar>
   );
   */
-}
+};
+
+export default NavBar;

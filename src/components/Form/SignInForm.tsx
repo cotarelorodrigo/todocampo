@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
 import {
@@ -17,14 +16,14 @@ import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signInSchema, TSignInSchema } from "@/lib/types";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignInForm() {
+  const router = useRouter();
   const form = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
   });
-  const [isVisible, setIsVisible] = useState(false);
-
-  const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit = async (data: TSignInSchema) => {
     const signInData = await signIn("credentials", {
@@ -36,6 +35,7 @@ export default function SignInForm() {
       console.log("Error:", signInData.error);
     } else {
       console.log("login OK");
+      router.refresh();
     }
     form.reset();
   };
@@ -61,7 +61,7 @@ export default function SignInForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Contraseña</FormLabel>
               <FormControl>
                 <Input placeholder="shadcn" {...field} />
               </FormControl>
@@ -69,8 +69,20 @@ export default function SignInForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="w-full mt-6" type="submit">
+          Ingresar
+        </Button>
       </form>
+      <div className="mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400">
+        or
+      </div>
+
+      <p className="text-center text-sm text-gray-600 mt-2">
+        Aun no estas registrado, registrate&nbsp;
+        <Link className="text-blue-500 hover:underline" href="/sign-up">
+          aqui
+        </Link>
+      </p>
     </Form>
   );
 
