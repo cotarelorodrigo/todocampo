@@ -85,49 +85,4 @@ export default function SignInForm() {
       </p>
     </Form>
   );
-
-  /*
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-      <div className="space-y-2">
-        <Input
-          {...register("email")}
-          label="Email"
-          placeholder="Enter your email"
-          isInvalid={!!errors.email}
-          errorMessage={!!errors.email && "Please enter a valid email"}
-          variant="flat"
-          color="primary"
-        />
-        <Input
-          {...register("password")}
-          label="Password"
-          variant="flat"
-          color="primary"
-          placeholder="Enter your password"
-          endContent={
-            <button
-              className="focus:outline-none"
-              type="button"
-              onClick={toggleVisibility}
-            >
-              {isVisible ? (
-                <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-              ) : (
-                <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-              )}
-            </button>
-          }
-          type={isVisible ? "text" : "password"}
-          className="max-w-xs"
-          isInvalid={!!errors.password}
-          errorMessage={!!errors.password && "Please enter a valid password"}
-        />
-        <Button type="submit" color="primary" className="w-full">
-          Ingresar
-        </Button>
-      </div>
-    </form>
-  );
-  */
 }

@@ -27,6 +27,15 @@ function SignUpForm() {
   const router = useRouter();
   const form = useForm<TSignUpSchema>({
     resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      name: "",
+      lastname: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      profile: undefined,
+      phoneNumber: "",
+    },
   });
 
   const onSubmit = async (values: TSignUpSchema) => {
