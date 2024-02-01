@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 export default function FirstBlock() {
   return (
     <div className="p-4 md:py-40 w-full h-screen flex flex-col justify-center">
-      <div className="grid max-w-7xl mx-auto md:grid-cols-2 bg-red-200">
+      <div className="grid max-w-7xl mx-auto md:grid-cols-2">
         <div className="flex flex-col justify-between">
           <h1 className="text-5xl font-semibold">
             La revolucion

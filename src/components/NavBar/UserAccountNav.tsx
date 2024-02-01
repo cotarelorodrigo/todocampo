@@ -13,7 +13,7 @@ function UserAccountNav() {
       }
       variant="destructive"
     >
-      Sign Out
+      Salir
     </Button>
   );
 }
