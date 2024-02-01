@@ -50,7 +50,7 @@ export default function SignInForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="shadcn" {...field} />
+                <Input type="email" placeholder="user@gmail.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -63,7 +63,7 @@ export default function SignInForm() {
             <FormItem>
               <FormLabel>Contraseña</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="********" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
