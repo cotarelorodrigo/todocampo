@@ -48,6 +48,10 @@ const config = {
           "950": "#1b250e",
         },
       },
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

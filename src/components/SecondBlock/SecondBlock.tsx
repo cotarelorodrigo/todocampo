@@ -39,7 +39,7 @@ function SecondBlock() {
   return (
     <div className="relative p-10 w-full mx-auto max-w-7xl">
       <h2 className="text-3xl pb-20">¿Que ofrecemos?</h2>
-      <div className="flex flex-row flex-wrap w-full justify-between space-x-6 space-y-2">
+      <div className="flex flex-row flex-wrap w-full justify-between gap-4">
         <CardInfo
           className="bg-cane-50"
           icon={<ShoppingCart size={64} />}
