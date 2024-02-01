@@ -10,7 +10,7 @@ const NavBar = async () => {
   const session = await getServerSession(authOptions);
 
   return (
-    <div className="border-b border-s-zinc-200 fixed w-full z-10 top-0 bg-white">
+    <div className="border-b border-s-zinc-200 fixed w-full  top-0 bg-white z-50">
       <div className="container flex items-center justify-between h-14">
         <Link href="/">
           <HandMetal />

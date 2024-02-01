@@ -16,7 +16,7 @@ export default function FirstBlock() {
             nuestros clientes una solucion de calidad que facilite y aumente las
             ganancias
           </p>
-          <Button className=" mt-6">Consultanos</Button>
+          <Button className="mt-6">Consultanos</Button>
         </div>
         <div className="relative">
           <Image
@@ -24,7 +24,21 @@ export default function FirstBlock() {
             height={400}
             width={400}
             alt="campo"
-            className="rounded-full h-96 w-96 absolute -top-10"
+            className="rounded-full h-96 w-96 absolute -top-10 z-10"
+          />
+          <Image
+            src="/assets/firstBlock2.jpg"
+            height={400}
+            width={400}
+            alt="campo"
+            className="rounded-full w-80 absolute right-20 h-80 -top-1/2 left-1/2"
+          />
+          <Image
+            src="/assets/firstBlock3.jpg"
+            height={400}
+            width={400}
+            alt="campo"
+            className="rounded-full w-72 absolute right-20 h-72 top-1/2 left-48"
           />
         </div>
       </div>
