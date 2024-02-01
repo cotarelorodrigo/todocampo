@@ -1,22 +1,13 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { hash } from "bcrypt";
-import * as z from "zod";
-
-const userSchema = z.object({
-  name: z.string().min(1, "Name is required").max(50),
-  lastname: z.string().min(1, "Lastname is required").max(50),
-  password: z
-    .string()
-    .min(1, "Password is required")
-    .min(8, "Password must have at least 8 characters"),
-  email: z.string().min(1, "Email is required").email("Invalid email"),
-});
+import { signUpSchema } from "@/lib/types";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, password, name, lastname } = userSchema.parse(body);
+    const { email, password, name, lastname, profile, phoneNumber } =
+      signUpSchema.parse(body);
 
     const existingUserByEmail = await db.user.findUnique({
       where: { email: email },
@@ -35,6 +26,8 @@ export async function POST(req: Request) {
         password: hashedPassword,
         name,
         lastname,
+        profile,
+        phone: phoneNumber,
       },
     });
 
