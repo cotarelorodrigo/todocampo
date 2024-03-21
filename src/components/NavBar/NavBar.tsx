@@ -11,7 +11,7 @@ const NavBar = async () => {
 
   return (
     <div className="border-b border-s-zinc-200 fixed w-full top-0 bg-white z-50">
-      <div className="container flex items-center justify-between h-14">
+      <div className="container flex items-center justify-between h-[70px]">
         <Link href="/">
           <HandMetal />
         </Link>

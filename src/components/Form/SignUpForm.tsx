@@ -164,7 +164,7 @@ function SignUpForm() {
             </FormItem>
           )}
         />
-        <Button className="w-full mt-6" type="submit">
+        <Button className="w-full mt-6 hover:bg-cane-500" type="submit">
           Registrarme
         </Button>
       </form>

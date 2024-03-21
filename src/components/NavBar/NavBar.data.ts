@@ -1,22 +1,17 @@
 export const dataNavBar = [
   {
     id: 1,
-    name: "Servicios",
-    idLink: "/servicios",
-  },
-  {
-    id: 2,
     name: "Cotizaciones",
     idLink: "/cotizaciones",
   },
   {
-    id: 3,
+    id: 2,
     name: "Vender granos",
-    idLink: "/vender",
+    idLink: "/ventas",
   },
   {
-    id: 4,
-    name: "Mis ventas",
-    idLink: "/ventas",
+    id: 3,
+    name: "¿Quiénes somos?",
+    idLink: "/nosotros",
   },
 ];
