@@ -37,7 +37,7 @@ const cotizaciones = [
 
 function CotizationTable() {
   return (
-    <Table className="bg-white rounded-md">
+    <Table className="bg-white rounded-md h-80">
       <TableHeader>
         <TableRow>
           <TableHead>Empresa</TableHead>

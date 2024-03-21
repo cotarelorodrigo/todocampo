@@ -19,7 +19,7 @@ export default function Cotizaciones() {
             height={600}
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 opacity-60"
           />
-          <div className="w-3/4 absolute bottom-1/4 left-1/4 shadow-md z-20">
+          <div className="w-3/4 absolute bottom-14 left-1/4 shadow-md z-20">
             <CotizationTable />
           </div>
           <div className="w-3/4 absolute top-1/4 shadow-md z-10">
