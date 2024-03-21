@@ -31,31 +31,21 @@ export default function Nosotros() {
         <div className="flex flex-col items-center xl:items-start">
           <h1 className="text-4xl font-bold text-cane-600">¿Quiénes somos?</h1>
           <div className="flex xl:justify-between flex-1 flex-row gap-32 flex-wrap  xl:flex-nowrap justify-center">
-            <div className="w-1/2 flex flex-col gap-4 py-8">
+            <div className="w-1/2 flex flex-col  justify-evenly gap-4">
               <p className="text-lg text-[#797979]">
-                Somos Techforb, una empresa donde la innovación y la excelencia
-                tecnológica se unen para brindarle soluciones a medida.
+                Somos <span className="text-cane-600">GranosDirectos</span>, una
+                plataforma de venta que conecta al productor directamente con
+                las principales empresas agroexportadoras, simplificando y
+                agilizando la venta de granos en un contexto de confianza y
+                seguridad.
               </p>
               <p className="text-lg text-[#797979]">
-                Trabajamos para entender sus objetivos, transformando esas ideas
-                en soluciones prácticas y efectivas que impulsan su crecimiento
-                y mejoran su rendimiento.
+                Además, acompañamos al productor con información del mercado de
+                commodities y specialities, brindamos información técnica sobre
+                diferentes cultivos de interés, y asesoramos en materia de
+                seguros agropecuarios para una mejor cobertura de la inversión.
               </p>
-              <p className="text-lg text-[#797979]">
-                Nos enfocamos en satisfacer sus necesidades específicas,
-                ofreciendo una amplia gama de servicios y soluciones digitales.
-              </p>
-              <p className="text-lg text-[#797979]">
-                Nuestra trayectoria en el mercado nos respalda, cada proyecto
-                que emprendemos se trata con el mismo nivel de dedicación y
-                profesionalismo.
-              </p>
-              <p className="text-lg text-[#797979]">
-                Valoramos nuestro compromiso con la responsabilidad social y la
-                comunidad. Creemos que el éxito empresarial va de la mano con la
-                sostenibilidad, por lo que buscamos constantemente formas de
-                generar un impacto positivo en nuestro entorno.
-              </p>
+              <p className="text-lg text-[#797979]">Todo en el mismo lugar.</p>
             </div>
             <div className="w-1/2 flex flex-col justify-center gap-8">
               <div className="flex flex-row justify-between items-center">
