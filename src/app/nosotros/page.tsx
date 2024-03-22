@@ -20,7 +20,7 @@ export default function Nosotros() {
           </div>
           <div className="rounded-3xl w-1/3 h-[750px] relative xl:block hidden">
             <Image
-              src="/assets/tractor2.jpeg"
+              src="/assets/soja.jpeg"
               alt="nosotros"
               layout="fill"
               className="rounded-3xl"
