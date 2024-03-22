@@ -5,6 +5,7 @@ import { buttonVariants } from "../ui/button";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import UserAccountNav from "./UserAccountNav";
+import NavBarButton from "./NavBarButton";
 
 const NavBar = async () => {
   const session = await getServerSession(authOptions);
@@ -13,20 +14,16 @@ const NavBar = async () => {
     <div className="border-b border-s-zinc-200 fixed w-full top-0 bg-white z-50">
       <div className="container flex items-center justify-between h-[70px]">
         <Link href="/">
-          <HandMetal />
+          <div className="flex flex-row items-center gap-2">
+            <HandMetal />
+            <h4 className="font-bold">Granos Directos</h4>
+          </div>
         </Link>
         <div className="flex flex-row gap-4 items-center">
           {dataNavBar.map((data) => {
             //console.log("Active:", pathname === data.idLink);
             return (
-              <Link
-                key={data.id}
-                color="foreground"
-                href={data.idLink}
-                className="font-normal text-sm"
-              >
-                {data.name}
-              </Link>
+              <NavBarButton key={data.id} href={data.idLink} name={data.name} />
             );
           })}
           {session?.user ? (
