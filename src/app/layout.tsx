@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Granos Directos",
@@ -16,12 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>
-        <main className="min-h-screen flex flex-col justify-center items-center">
-          <NavBar />
-          {children}
-        </main>
-      </body>
+      <Providers>
+        <body>
+          <main className="min-h-screen flex flex-col justify-center items-center">
+            <NavBar />
+            {children}
+          </main>
+        </body>
+      </Providers>
     </html>
   );
 }

@@ -11,7 +11,7 @@ export default function Page() {
         alt="My SVG"
         width={700}
         height={700}
-        className="absolute top-0 left-0 z-40"
+        className="absolute top-0 left-0 -z-10"
       />
       <FirstBlock />
       <Separator className="w-3/4" />

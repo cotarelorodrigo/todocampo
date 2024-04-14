@@ -6,9 +6,11 @@ import { usePathname } from "next/navigation";
 export default function NavBarButton({
   href,
   name,
+  onClick,
 }: {
   href: Url;
   name: string;
+  onClick?: () => void;
 }) {
   const pathName = usePathname();
   const isActive = pathName === href;
@@ -19,6 +21,7 @@ export default function NavBarButton({
       }`}
       color="foreground"
       href={href}
+      onClick={onClick}
     >
       {name}
     </Link>

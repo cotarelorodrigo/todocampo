@@ -1,129 +1,33 @@
-import { dataNavBar } from "./NavBar.data";
+"use client";
 import Link from "next/link";
-import { HandMetal } from "lucide-react";
-import { buttonVariants } from "../ui/button";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import UserAccountNav from "./UserAccountNav";
-import NavBarButton from "./NavBarButton";
+import { HandMetal, Menu } from "lucide-react";
+import SideBard from "./SideBard";
+import MenuButtons from "./MenuButtons";
+import { useState } from "react";
 
-const NavBar = async () => {
-  const session = await getServerSession(authOptions);
+const NavBar = () => {
+  const [sideBarOpen, setSideBarOpen] = useState(false);
 
   return (
-    <div className="border-b border-s-zinc-200 fixed w-full top-0 bg-white z-50">
-      <div className="container flex items-center justify-between h-[70px]">
-        <Link href="/">
-          <div className="flex flex-row items-center gap-2">
-            <HandMetal />
-            <h4 className="font-bold">Granos Directos</h4>
-          </div>
-        </Link>
-        <div className="flex flex-row gap-4 items-center">
-          {dataNavBar.map((data) => {
-            //console.log("Active:", pathname === data.idLink);
-            return (
-              <NavBarButton key={data.id} href={data.idLink} name={data.name} />
-            );
-          })}
-          {session?.user ? (
-            <UserAccountNav />
-          ) : (
-            <Link className={buttonVariants()} href="/sign-in">
-              Ingresar
-            </Link>
-          )}
+    <>
+      <div className="border-b border-s-zinc-200 fixed w-full top-0 bg-white z-50 h-[70px]">
+        <div className="container flex items-center justify-between h-[70px] gap-x-4">
+          <Link href="/">
+            <div className="flex flex-row items-center gap-2">
+              <HandMetal />
+              <h4 className="font-bold">Granos Directos</h4>
+            </div>
+          </Link>
+          <MenuButtons className="hidden lg:flex lg:flex-row lg:gap-4 lg:items-center" />
+          <Menu
+            className="lg:hidden"
+            onClick={() => setSideBarOpen((s) => !s)}
+          />
         </div>
       </div>
-    </div>
+      <SideBard open={sideBarOpen} onClick={() => setSideBarOpen(false)} />
+    </>
   );
-  /*
-  return (
-    <Navbar
-      className="bg-primary-300 fixed top-0"
-      classNames={{
-        item: ["data-[active=true]:text-secondary-100"],
-      }}
-      isBordered
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-    >
-      <NavbarContent className="sm:hidden" justify="start">
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        />
-      </NavbarContent>
-
-      <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarBrand>
-          <Image
-            src="/assets/logo.jpeg"
-            width={50}
-            height={50}
-            alt="Logo todocampo"
-          />
-          <p className="font-bold text-inherit">todocampo</p>
-        </NavbarBrand>
-      </NavbarContent>
-
-      <NavbarContent className="hidden sm:flex gap-6 grow" justify="center">
-        <NavbarBrand>
-          <Image
-            src="/assets/logo.jpeg"
-            width={50}
-            height={50}
-            alt="Logo todocampo"
-          />
-          <p className="font-bold text-inherit pl-2">todocampo</p>
-        </NavbarBrand>
-        {dataNavBar.map((data) => {
-          console.log("Active:", pathname === data.idLink);
-          return (
-            <NavbarItem
-              key={data.id}
-              isActive={pathname === data.idLink}
-              className="group"
-            >
-              <Link
-                color="foreground"
-                href={data.idLink}
-                className="font-normal text-sm group-data-[active=true]:text-secondary-500"
-              >
-                {data.name}
-              </Link>
-            </NavbarItem>
-          );
-        })}
-        <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
-            Ingresar
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-
-      <NavbarMenu>
-        {dataNavBar.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 2
-                  ? "warning"
-                  : index === dataNavBar.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              href="#"
-              size="lg"
-            >
-              {item.name}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
-    </Navbar>
-  );
-  */
 };
 
 export default NavBar;
