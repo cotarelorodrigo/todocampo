@@ -12,14 +12,18 @@ export default function SideBard({
   return (
     <div
       className={cn(
-        "lg:hidden absolute right-0 top-0 h-screen w-full px-4 pt-5 duration-500 z-40 mt-[70px] bg-white border-l border-s-zinc-200",
-        !open ? "hidden" : "flex flex-col"
+        !open ? "w-0" : "w-full",
+        "lg:hidden absolute right-0 top-0 h-screen duration-500 z-40 bg-white border-l border-s-zinc-200 transition-all"
       )}
     >
-      <MenuButtons
-        className="lg:hidden flex flex-col gap-8 items-start"
-        onClick={onClick}
-      />
+      <div className="flex flex-col flex-1 bg-red-200 px-4 pt-5  mt-[70px]">
+        {open && (
+          <MenuButtons
+            className="flex flex-col gap-8 items-start"
+            onClick={onClick}
+          />
+        )}
+      </div>
     </div>
   );
 }

@@ -33,7 +33,7 @@ const MenuButtons = ({
       {session?.user ? (
         <UserAccountNav />
       ) : (
-        <Link className={buttonVariants()} href="/sign-in">
+        <Link className={buttonVariants()} onClick={onClick} href="/sign-in">
           Ingresar
         </Link>
       )}
