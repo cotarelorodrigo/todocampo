@@ -31,7 +31,7 @@ export default function Nosotros() {
         <div className="flex flex-col items-center xl:items-start">
           <h1 className="text-4xl font-bold text-cane-600">¿Quiénes somos?</h1>
           <div className="flex xl:justify-between flex-1 flex-row gap-32 flex-wrap  xl:flex-nowrap justify-center">
-            <div className="w-1/2 flex flex-col  justify-evenly gap-4">
+            <div className="w-1/2 flex flex-col justify-evenly gap-4">
               <p className="text-lg text-[#797979]">
                 Somos <span className="text-cane-600">GranosDirectos</span>, una
                 plataforma de venta que conecta al productor directamente con
@@ -47,19 +47,19 @@ export default function Nosotros() {
               </p>
               <p className="text-lg text-[#797979]">Todo en el mismo lugar.</p>
             </div>
-            <div className="w-1/2 flex flex-col justify-center gap-8">
-              <div className="flex flex-row justify-between items-center">
-                <h4 className="w-1/4 text-3xl text-cane-500">Vision</h4>
-                <p className="w-3/4 text-lg text-[#797979]">
+            <div className="w-1/2 flex flex-col justify-center gap-8 bg-red-200 container">
+              <div className="flex flex-row justify-between items-center flex-wrap">
+                <h4 className="text-3xl text-cane-500">Vision</h4>
+                <p className="text-lg text-[#797979]">
                   Nuestra visión es ser un socio tecnológico de confianza para
                   nuestros clientes, ayudándolos a alcanzar el éxito y superar
                   sus metas comerciales.
                 </p>
               </div>
               <Separator />
-              <div className="flex flex-row justify-between items-center">
-                <h4 className="w-1/4 text-3xl text-cane-500">Misión</h4>
-                <p className="w-3/4 text-lg text-[#797979]">
+              <div className="flex flex-row justify-between items-center flex-wrap">
+                <h4 className="text-3xl text-cane-500">Misión</h4>
+                <p className="text-lg text-[#797979]">
                   Entendemos que la tecnología es una herramienta poderosa, y
                   nuestra misión es ponerla al servicio de su empresa para
                   impulsar su eficiencia y competitividad.
@@ -67,8 +67,8 @@ export default function Nosotros() {
               </div>
               <Separator />
               <div className="flex flex-row justify-between items-center flex-wrap">
-                <h4 className="w-1/4 text-3xl text-cane-500">Valores</h4>
-                <p className="w-3/4 text-lg text-[#797979]">
+                <h4 className="text-3xl text-cane-500">Valores</h4>
+                <p className="text-lg text-[#797979]">
                   Nuestra cultura empresarial fomenta la creatividad y la
                   colaboración, permitiendo que cada miembro del equipo aporte
                   sus habilidades para lograr resultados sobresalientes.
