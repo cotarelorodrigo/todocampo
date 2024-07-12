@@ -8,51 +8,29 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const cotizaciones = [
-  {
-    empresa: "AGD",
-    grano: "Trigo",
-    valor: 172,
-    liquidacion: "contado",
-  },
-  {
-    empresa: "AGD",
-    grano: "Maiz",
-    valor: 190,
-    liquidacion: "contado",
-  },
-  {
-    empresa: "AGD",
-    grano: "Girasol",
-    valor: 235,
-    liquidacion: "contado",
-  },
-  {
-    empresa: "AGD",
-    grano: "Soja",
-    valor: 260,
-    liquidacion: "contado",
-  },
-];
-
-function CotizationTable() {
+function CotizationTable({
+  title,
+  cotizaciones,
+}: {
+  title: string;
+  cotizaciones: { name: string; price: string }[];
+}) {
   return (
-    <Table className="bg-white rounded-md h-80">
+    <Table className="bg-white rounded-md h-80 shadow-md border-2">
+      <TableCaption>{title}</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>Empresa</TableHead>
           <TableHead>Grano</TableHead>
-          <TableHead>Cotizacion (usd/tn)</TableHead>
+          <TableHead>Cotizacion ($/Tn )</TableHead>
           <TableHead>Forma de liquidacion</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {cotizaciones.map((cotizacion) => (
-          <TableRow key={cotizacion.empresa + cotizacion.grano}>
-            <TableCell className="font-medium">{cotizacion.empresa}</TableCell>
-            <TableCell>{cotizacion.grano}</TableCell>
-            <TableCell>{cotizacion.valor}</TableCell>
-            <TableCell>{cotizacion.liquidacion}</TableCell>
+          <TableRow key={cotizacion.name}>
+            <TableCell>{cotizacion.name.toUpperCase()}</TableCell>
+            <TableCell>{cotizacion.price}</TableCell>
+            <TableCell>Pago Contado</TableCell>
           </TableRow>
         ))}
       </TableBody>

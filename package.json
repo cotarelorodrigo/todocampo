@@ -19,6 +19,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@tremor/react": "^3.14.1",
     "bcrypt": "^5.1.1",
+    "cheerio": "^1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^10.18.0",
