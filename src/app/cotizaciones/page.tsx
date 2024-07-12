@@ -1,40 +1,8 @@
 import CotizationTable from "@/components/CotizationTable/CotizationTable";
-import { CotizacionLine } from "@/components/CotizacionLine";
 import Image from "next/image";
 import ContactoButton from "@/components/ContactoButton/ContactoButton";
-import * as cheerio from "cheerio";
 
-async function getPrices() {
-  const url = "https://www.cac.bcr.com.ar/es/precios-de-pizarra";
-  const res = await fetch(url);
-  const data = await res.text();
-  const $ = cheerio.load(data);
-
-  const trigo_price = $("div.board-trigo").find(".price").text().trim();
-  const maiz_price = $("div.board-maiz").find(".price").text().trim();
-  const girasol_price = $("div.board-girasol").find(".price").text().trim();
-  const soja_price = $("div.board-soja").find(".price").text().trim();
-  const sorgo_price = $("div.board-sorgo").find(".price").text().trim();
-
-  const fecha = $("div.board-prices").find("h3").first().text();
-
-  return {
-    cotizaciones: [
-      { name: "trigo", price: trigo_price },
-      { name: "maiz", price: maiz_price },
-      { name: "girasol", price: girasol_price },
-      { name: "soja", price: soja_price },
-      { name: "sorgo", price: sorgo_price },
-    ],
-    fecha: fecha,
-  };
-}
-
-export default async function Cotizaciones() {
-  const prices = await getPrices();
-
-  console.log("P:", prices);
-
+export default function Cotizaciones() {
   return (
     <div className="flex flex-col w-full h-screen">
       <div className="w-full bg-cane-200 h-[250px] flex flex-col items-center justify-center gap-2 mt-[70px] relative bg-[url('/assets/grid.svg')] p-4">
@@ -54,10 +22,7 @@ export default async function Cotizaciones() {
               className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 opacity-60"
             />
             <div className="z-20 h-full flex flex-col justify-center">
-              <CotizationTable
-                title={prices.fecha}
-                cotizaciones={prices.cotizaciones}
-              />
+              <CotizationTable />
             </div>
           </div>
           <div className="col-span-1 flex flex-col gap-12 justify-center items-center">
