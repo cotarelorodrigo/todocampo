@@ -9,6 +9,7 @@ import {
 import { ShoppingCart, HeartHandshake, CandlestickChart } from "lucide-react";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const CardInfo = ({
   title,
@@ -46,11 +47,13 @@ function SecondBlock() {
           title="Comercialización de granos"
           description="Comercializa tus granos de la forma mas sencilla y segura"
         />
-        <CardInfo
-          icon={<HeartHandshake size={64} />}
-          title="Seguros Agropecuarios"
-          description="Contrata tu seguro y dormi tranquilo"
-        />
+        <Link href="/seguros">
+          <CardInfo
+            icon={<HeartHandshake size={64} />}
+            title="Seguros Agropecuarios"
+            description="Contrata tu seguro y dormi tranquilo"
+          />
+        </Link>
         <CardInfo
           className="bg-cane-50"
           icon={<CandlestickChart size={64} />}

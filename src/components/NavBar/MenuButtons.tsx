@@ -23,7 +23,7 @@ const MenuButtons = ({
         //console.log("Active:", pathname === data.idLink);
         return (
           <NavBarButton
-            key={data.id}
+            key={data.name}
             href={data.idLink}
             name={data.name}
             onClick={onClick}

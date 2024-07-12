@@ -7,7 +7,9 @@ export default function Cotizaciones() {
   return (
     <div className="flex flex-col w-full h-screen">
       <div className="w-full bg-cane-200 h-[250px] flex flex-col items-center justify-center gap-2 mt-[70px] relative bg-[url('/assets/grid.svg')] p-4">
-        <h2 className="text-4xl font-bold">Cotizaciones</h2>
+        <h2 className="text-4xl font-bold">
+          Mantente Informado con Nuestras Cotizaciones de Granos
+        </h2>
         <h3>Encontra tu mejor cotizacion</h3>
       </div>
       <div className="flex flex-1 pt-4">
