@@ -4,11 +4,7 @@ import { Separator } from "@/components/ui/separator";
 export default function Nosotros() {
   return (
     <div className="flex flex-col w-full">
-      <div className="w-full bg-cane-200 h-[250px] flex flex-col items-center justify-center gap-2 mt-[70px] bg-[url('/assets/grid.svg')] p-4">
-        <h2 className="text-4xl font-bold">¿Quiénes somos?</h2>
-        <h3>Vende tus granos de forma sencilla</h3>
-      </div>
-      <div className="container flex flex-1 flex-col gap-16 pt-10 ">
+      <div className="container flex flex-1 flex-col gap-16 pt-10 mt-[70px]">
         <div className="flex flex-row gap-8">
           <div className="container lg:w-2/3 relative">
             <Image
@@ -18,7 +14,7 @@ export default function Nosotros() {
               className="rounded-3xl"
             />
           </div>
-          <div className="rounded-3xl w-1/3 h-[750px] relative xl:block hidden">
+          <div className="rounded-3xl w-1/3 h-[550px] relative xl:block hidden">
             <Image
               src="/assets/soja.jpeg"
               alt="nosotros"
