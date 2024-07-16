@@ -31,10 +31,11 @@ export const signUpSchema = z
 export type TSignUpSchema = z.infer<typeof signUpSchema>;
 
 export const insuranceSchema = z.object({
-  hecate: z.number().min(1, "Ingresa la cantidad de hectareas"),
+  hecate: z.coerce.number().min(1, "Ingresa la cantidad de hectareas"),
   coverage: z.string(),
   email: z.string().min(1, "Email is required").email("Invalid email"),
   phoneNumber: z.string().min(10).max(14),
+  comments: z.string().optional(),
 });
 
 export type TInsuranceSchema = z.infer<typeof insuranceSchema>;
