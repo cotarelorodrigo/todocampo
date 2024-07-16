@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Seguros() {
   return (
-    <div className="h-full container flex flex-row">
+    <div className="h-full container flex flex-row flex-wrap justify-center">
       <div className="basis-1/2 pr-10">
         <h1 className="text-4xl font-bold">Seguros Agropecuarios</h1>
         <h2 className="text-xl italic py-5 text-justify break-words text-gray-600 dark:text-gray-400">
@@ -11,7 +11,7 @@ export default function Seguros() {
           de cobertura que podrás ajustar según tus necesidades y costos
           objetivo.
         </h2>
-        <div className="flex flex-1 h-full relative">
+        <div className="hidden xl:flex flex-1 h-full relative">
           <Image
             src="/assets/soja.jpeg"
             alt="nosotros"
@@ -27,10 +27,3 @@ export default function Seguros() {
     </div>
   );
 }
-
-/*
-  Hectareas,
-  cobertura,
-  mail de contacto,
-  telefono de contacto
-*/

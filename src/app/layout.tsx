@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import NavBar from "@/components/NavBar/NavBar";
 import Providers from "./providers";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Granos Directos",
@@ -23,6 +24,7 @@ export default function RootLayout({
             <NavBar />
             {children}
           </main>
+          <Toaster />
         </body>
       </Providers>
     </html>

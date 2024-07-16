@@ -16,8 +16,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import sendEmail from "@/app/seguros/action";
+import { useToast } from "@/components/ui/use-toast";
 
 function InsuranceForm() {
+  const { toast } = useToast();
   const form = useForm<TInsuranceSchema>({
     resolver: zodResolver(insuranceSchema),
     defaultValues: {
@@ -32,7 +34,17 @@ function InsuranceForm() {
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("comments", values.comments ?? "");
-    await sendEmail(formData);
+    await sendEmail(formData).then((response) => {
+      if (response?.message) {
+        toast({
+          variant: "destructive",
+          title: "Uh oh!",
+          description: response.message,
+        });
+      } else {
+        form.reset();
+      }
+    });
   };
 
   return (

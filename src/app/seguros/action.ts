@@ -13,7 +13,7 @@ export default async function sendEmail(formData: FormData) {
   // Return early if the form data is invalid
   if (!validatedFields.success) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
+      message: "El formulario esta incompleto",
     };
   }
 
@@ -25,7 +25,11 @@ export default async function sendEmail(formData: FormData) {
   });
 
   if (error) {
-    throw error;
+    //TO DO: report error from resend
+    return {
+      message:
+        "Estamos experimentado un error. Contactate con nosotros en granosdirectos@gmail.com",
+    };
   }
 
   return;
