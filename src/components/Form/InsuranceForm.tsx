@@ -15,20 +15,24 @@ import { TInsuranceSchema, insuranceSchema } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
-import { useRouter } from "next/navigation";
+import sendEmail from "@/app/seguros/action";
 
 function InsuranceForm() {
-  const router = useRouter();
   const form = useForm<TInsuranceSchema>({
     resolver: zodResolver(insuranceSchema),
     defaultValues: {
-      coverage: "cobertura_1",
       phoneNumber: "",
     },
   });
 
   const onSubmit = async (values: TInsuranceSchema) => {
-    console.log("Values:", values);
+    const formData = new FormData();
+    formData.append("hecate", String(values.hecate));
+    formData.append("coverage", values.coverage);
+    formData.append("email", values.email);
+    formData.append("phoneNumber", values.phoneNumber);
+    formData.append("comments", values.comments ?? "");
+    await sendEmail(formData);
   };
 
   return (
@@ -60,7 +64,10 @@ function InsuranceForm() {
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="cobertura_1" />
+                      <RadioGroupItem
+                        value="cobertura_1"
+                        checked={field.value === "cobertura_1"}
+                      />
                     </FormControl>
                     <FormLabel className="font-normal">
                       Cobertura clasica (granizo + incendio + resiembre)
@@ -68,7 +75,10 @@ function InsuranceForm() {
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="cobertura_2" />
+                      <RadioGroupItem
+                        value="cobertura_2"
+                        checked={field.value === "cobertura_2"}
+                      />
                     </FormControl>
                     <FormLabel className="font-normal">
                       Cobertura clasica + adicional de heladas
@@ -76,7 +86,10 @@ function InsuranceForm() {
                   </FormItem>
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
-                      <RadioGroupItem value="cobertura_3" />
+                      <RadioGroupItem
+                        value="cobertura_3"
+                        checked={field.value === "cobertura_3"}
+                      />
                     </FormControl>
                     <FormLabel className="font-normal">
                       Cobertura clasica + otros adicional (especificar en
@@ -130,10 +143,7 @@ function InsuranceForm() {
             </FormItem>
           )}
         />
-        <Button
-          className="w-full mt-6  bg-cane-500 hover:bg-cane-600"
-          type="submit"
-        >
+        <Button className="w-full mt-6  bg-cane-500 hover:bg-cane-600">
           Quiero mas informacion!
         </Button>
       </form>
