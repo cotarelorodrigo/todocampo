@@ -25,7 +25,8 @@ function InsuranceForm() {
     resolver: zodResolver(insuranceSchema),
     defaultValues: {
       phoneNumber: "",
-      date: new Date(), // Add this line
+      date: new Date(),
+      cultivo: "", // Add this line
     },
   });
 
@@ -36,7 +37,8 @@ function InsuranceForm() {
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("comments", values.comments ?? "");
-    formData.append("date", values.date.toISOString()); // Add this line
+    formData.append("date", values.date.toISOString());
+    formData.append("cultivo", values.cultivo); // Add this line
     await sendEmail(formData).then((response) => {
       if (response?.message) {
         toast({
@@ -136,6 +138,19 @@ function InsuranceForm() {
             <FormItem>
               <FormControl>
                 <Input placeholder="Telefono" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="cultivo"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Cultivo</FormLabel>
+              <FormControl>
+                <Input placeholder="Cultivo" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
