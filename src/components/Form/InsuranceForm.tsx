@@ -17,6 +17,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import sendEmail from "@/app/seguros/action";
 import { useToast } from "@/components/ui/use-toast";
+import { DatePicker } from "@/components/ui/date-picker"; // Import DatePicker component
 
 function InsuranceForm() {
   const { toast } = useToast();
@@ -34,6 +35,8 @@ function InsuranceForm() {
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("comments", values.comments ?? "");
+    formData.append("date", values.date); // Include date in formData
+    formData.append("cultivo", values.cultivo); // Include cultivo in formData
     await sendEmail(formData).then((response) => {
       if (response?.message) {
         toast({
@@ -150,6 +153,32 @@ function InsuranceForm() {
                   className="resize-none"
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Fecha</FormLabel>
+              <FormControl>
+                <DatePicker {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="cultivo"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Cultivo</FormLabel>
+              <FormControl>
+                <Input placeholder="Cultivo" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
