@@ -17,6 +17,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import sendEmail from "@/app/seguros/action";
 import { useToast } from "@/components/ui/use-toast";
+import { DatePicker } from "../ui/date-picker";
 
 function InsuranceForm() {
   const { toast } = useToast();
@@ -24,6 +25,7 @@ function InsuranceForm() {
     resolver: zodResolver(insuranceSchema),
     defaultValues: {
       phoneNumber: "",
+      date: new Date(), // Add this line
     },
   });
 
@@ -34,6 +36,7 @@ function InsuranceForm() {
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("comments", values.comments ?? "");
+    formData.append("date", values.date.toISOString()); // Add this line
     await sendEmail(formData).then((response) => {
       if (response?.message) {
         toast({
@@ -133,6 +136,19 @@ function InsuranceForm() {
             <FormItem>
               <FormControl>
                 <Input placeholder="Telefono" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Fecha</FormLabel>
+              <FormControl>
+                <DatePicker selected={field.value} onChange={field.onChange} />
               </FormControl>
               <FormMessage />
             </FormItem>
