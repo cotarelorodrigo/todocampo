@@ -17,8 +17,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import sendEmail from "@/app/seguros/action";
 import { useToast } from "@/components/ui/use-toast";
-import { DatePicker } from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 function InsuranceForm() {
   const { toast } = useToast();
@@ -36,6 +34,7 @@ function InsuranceForm() {
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("comments", values.comments ?? "");
+    formData.append("cultivo", values.cultivo ?? "");
     await sendEmail(formData).then((response) => {
       if (response?.message) {
         toast({
@@ -142,6 +141,19 @@ function InsuranceForm() {
         />
         <FormField
           control={form.control}
+          name="cultivo"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Cultivo</FormLabel>
+              <FormControl>
+                <Input placeholder="Cultivo" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="comments"
           render={({ field }) => (
             <FormItem>
@@ -151,24 +163,6 @@ function InsuranceForm() {
                   placeholder="Suma cualquier informacion que extra aqui"
                   className="resize-none"
                   {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Fecha</FormLabel>
-              <FormControl>
-                <DatePicker
-                  selected={field.value}
-                  onChange={field.onChange}
-                  dateFormat="dd/MM/yyyy"
-                  className="input"
                 />
               </FormControl>
               <FormMessage />
