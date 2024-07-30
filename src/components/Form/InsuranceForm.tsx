@@ -144,7 +144,7 @@ function InsuranceForm() {
           name="cultivo"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Cultivo</FormLabel>
+              <FormLabel>New Cultivo</FormLabel>
               <FormControl>
                 <Input placeholder="Cultivo" {...field} />
               </FormControl>
