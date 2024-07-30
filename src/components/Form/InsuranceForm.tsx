@@ -17,6 +17,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import sendEmail from "@/app/seguros/action";
 import { useToast } from "@/components/ui/use-toast";
+import { DatePicker } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function InsuranceForm() {
   const { toast } = useToast();
@@ -149,6 +151,24 @@ function InsuranceForm() {
                   placeholder="Suma cualquier informacion que extra aqui"
                   className="resize-none"
                   {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="date"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Fecha</FormLabel>
+              <FormControl>
+                <DatePicker
+                  selected={field.value}
+                  onChange={field.onChange}
+                  dateFormat="dd/MM/yyyy"
+                  className="input"
                 />
               </FormControl>
               <FormMessage />
