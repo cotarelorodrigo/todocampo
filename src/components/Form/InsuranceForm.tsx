@@ -34,6 +34,13 @@ function InsuranceForm() {
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("comments", values.comments ?? "");
+    formData.append("razonSocial", values.razonSocial);
+    formData.append("cuit", values.cuit);
+    formData.append("cultivo", values.cultivo);
+    formData.append("fecha", values.fecha);
+    formData.append("superficie", values.superficie);
+    formData.append("moneda", values.moneda);
+    formData.append("valorPorHectarea", values.valorPorHectarea);
     await sendEmail(formData).then((response) => {
       if (response?.message) {
         toast({
@@ -116,18 +123,6 @@ function InsuranceForm() {
         />
         <FormField
           control={form.control}
-          name="valorPorHectarea"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input type="number" placeholder="Valor por hectárea" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
@@ -162,6 +157,90 @@ function InsuranceForm() {
                   className="resize-none"
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="razonSocial"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Razón Social" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="cuit"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="CUIT" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="cultivo"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Cultivo" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="fecha"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="date" placeholder="Fecha" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="superficie"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Superficie" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="moneda"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Moneda" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="valorPorHectarea"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Valor por Hectárea" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
