@@ -33,7 +33,6 @@ function InsuranceForm() {
     formData.append("coverage", values.coverage);
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
-    formData.append("razonSocial", values.razonSocial);
     formData.append("comments", values.comments ?? "");
     await sendEmail(formData).then((response) => {
       if (response?.message) {
@@ -141,11 +140,11 @@ function InsuranceForm() {
         />
         <FormField
           control={form.control}
-          name="razonSocial"
+          name="cuit"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Razón social" {...field} />
+                <Input placeholder="Cuit" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
