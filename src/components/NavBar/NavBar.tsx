@@ -4,6 +4,7 @@ import { HandMetal, Menu } from "lucide-react";
 import SideBard from "./SideBard";
 import MenuButtons from "./MenuButtons";
 import { useState } from "react";
+import Image from "next/image";
 
 const NavBar = () => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -13,8 +14,13 @@ const NavBar = () => {
       <div className="border-b border-s-zinc-200 fixed w-full top-0 bg-white z-50 h-[70px]">
         <div className="container flex items-center justify-between h-[70px] gap-x-4">
           <Link href="/">
-            <div className="flex flex-row items-center gap-2">
-              <HandMetal />
+            <div className="flex flex-row items-center ">
+              <Image
+                src={"/assets/logoGD.png"}
+                alt="logo granos directos"
+                width={50}
+                height={50}
+              />
               <h4 className="font-bold">Granos Directos</h4>
             </div>
           </Link>
