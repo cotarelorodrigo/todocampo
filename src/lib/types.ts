@@ -41,7 +41,7 @@ export const insuranceSchema = z.object({
   cultivo: z.string().min(1, "Cultivo is required"),
   fecha: z.string().min(1, "Fecha is required"),
   superficie: z.coerce.number().min(1, "Superficie is required"),
-  moneda: z.enum(["qq", "usd", "$"], "Moneda is required"),
+  moneda: z.string().min(1),
   valorPorHectarea: z.coerce.number().min(1, "Valor por Hectárea is required"),
 });
 
