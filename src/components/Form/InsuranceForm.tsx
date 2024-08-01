@@ -152,6 +152,18 @@ function InsuranceForm() {
         />
         <FormField
           control={form.control}
+          name="cultivo"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Cultivo" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="comments"
           render={({ field }) => (
             <FormItem>
