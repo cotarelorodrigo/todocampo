@@ -140,11 +140,11 @@ function InsuranceForm() {
         />
         <FormField
           control={form.control}
-          name="fecha"
+          name="superficie"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="date" placeholder="Fecha" {...field} />
+                <Input type="number" placeholder="Superficie" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
