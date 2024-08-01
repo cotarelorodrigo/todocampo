@@ -23,7 +23,9 @@ function InsuranceForm() {
   const form = useForm<TInsuranceSchema>({
     resolver: zodResolver(insuranceSchema),
     defaultValues: {
+      hecate: 0,
       phoneNumber: "",
+      email: "",
     },
   });
 
