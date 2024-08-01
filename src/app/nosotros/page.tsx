@@ -3,8 +3,8 @@ import { Separator } from "@/components/ui/separator";
 
 export default function Nosotros() {
   return (
-    <div className="flex flex-col w-full">
-      <div className="container flex flex-1 flex-col gap-16 pt-10 mt-[70px]">
+    <div className="flex flex-col w-full mt-[70px]">
+      <div className="container flex flex-1 flex-col gap-16 pt-10">
         <div className="flex flex-row gap-8">
           <div className="container lg:w-2/3 relative">
             <Image

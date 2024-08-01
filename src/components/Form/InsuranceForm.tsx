@@ -8,6 +8,15 @@ import {
   FormLabel,
   FormDescription,
 } from "../ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -23,9 +32,17 @@ function InsuranceForm() {
   const form = useForm<TInsuranceSchema>({
     resolver: zodResolver(insuranceSchema),
     defaultValues: {
-      hecate: 0,
-      phoneNumber: "",
+      hecate: undefined,
+      coverage: "",
       email: "",
+      phoneNumber: "",
+      razonSocial: "",
+      cuit: "",
+      cultivo: "",
+      fecha: "",
+      superficie: undefined,
+      moneda: "",
+      valorPorHectarea: undefined,
     },
   });
 
@@ -36,6 +53,13 @@ function InsuranceForm() {
     formData.append("email", values.email);
     formData.append("phoneNumber", values.phoneNumber);
     formData.append("comments", values.comments ?? "");
+    formData.append("razonSocial", values.razonSocial);
+    formData.append("cuit", values.cuit);
+    formData.append("cultivo", values.cultivo);
+    formData.append("fecha", values.fecha);
+    formData.append("superficie", String(values.superficie));
+    formData.append("moneda", values.moneda);
+    formData.append("valorPorHectarea", String(values.valorPorHectarea));
     await sendEmail(formData).then((response) => {
       if (response?.message) {
         toast({
@@ -44,6 +68,10 @@ function InsuranceForm() {
           description: response.message,
         });
       } else {
+        toast({
+          title: "Informacion enviada!",
+          description: "Nos contactaremos a la brevedad",
+        });
         form.reset();
       }
     });
@@ -54,11 +82,70 @@ function InsuranceForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
+          name="cultivo"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Cultivo" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="hecate"
           render={({ field }) => (
             <FormItem>
               <FormControl>
                 <Input type="number" placeholder="Hectáreas" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="moneda"
+          render={({ field }) => (
+            <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Moneda" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="qq">qq</SelectItem>
+                  <SelectItem value="usd">usd</SelectItem>
+                  <SelectItem value="pesos">$</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="valorPorHectarea"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  type="number"
+                  placeholder="Valor por Hectárea"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="superficie"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Superficie" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -152,6 +239,42 @@ function InsuranceForm() {
                   className="resize-none"
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="razonSocial"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="Razón Social" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="cuit"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input placeholder="CUIT" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="fecha"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="date" placeholder="Fecha" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

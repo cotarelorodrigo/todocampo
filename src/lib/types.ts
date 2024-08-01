@@ -36,6 +36,13 @@ export const insuranceSchema = z.object({
   email: z.string().min(1, "Email is required").email("Invalid email"),
   phoneNumber: z.string().min(10).max(14),
   comments: z.string().optional(),
+  razonSocial: z.string().min(1, "Razón Social is required"),
+  cuit: z.string().min(1, "CUIT is required"),
+  cultivo: z.string().min(1, "Cultivo is required"),
+  fecha: z.string().min(1, "Fecha is required"),
+  superficie: z.coerce.number().min(1, "Superficie is required"),
+  moneda: z.string().min(1),
+  valorPorHectarea: z.coerce.number().min(1, "Valor por Hectárea is required"),
 });
 
 export type TInsuranceSchema = z.infer<typeof insuranceSchema>;
