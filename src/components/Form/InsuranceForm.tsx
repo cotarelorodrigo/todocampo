@@ -116,6 +116,18 @@ function InsuranceForm() {
         />
         <FormField
           control={form.control}
+          name="valorPorHectarea"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input type="number" placeholder="Valor por hectárea" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
@@ -133,35 +145,6 @@ function InsuranceForm() {
             <FormItem>
               <FormControl>
                 <Input placeholder="Telefono" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="superficie"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input type="number" placeholder="Superficie" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="moneda"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Moneda</FormLabel>
-              <FormControl>
-                <select {...field} className="form-select">
-                  <option value="qq">qq</option>
-                  <option value="usd">usd</option>
-                  <option value="$">$</option>
-                </select>
               </FormControl>
               <FormMessage />
             </FormItem>
