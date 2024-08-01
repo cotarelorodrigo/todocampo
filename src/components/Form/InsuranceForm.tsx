@@ -152,6 +152,23 @@ function InsuranceForm() {
         />
         <FormField
           control={form.control}
+          name="moneda"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Moneda</FormLabel>
+              <FormControl>
+                <select {...field} className="form-select">
+                  <option value="qq">qq</option>
+                  <option value="usd">usd</option>
+                  <option value="$">$</option>
+                </select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="comments"
           render={({ field }) => (
             <FormItem>
